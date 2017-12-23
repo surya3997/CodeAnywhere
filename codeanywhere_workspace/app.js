@@ -4,11 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
-var routes = require('./routes/router');
+var routes = require('./routes/router.js');
 var users = require('./routes/users');
+var codeAnywhere = require("./routes/codeanywhere.js");
 
 var app = express();
+mongoose.connect('mongodb://localhost/testForAuth');
+var db = mongoose.connection;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,12 +26,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.static(path.join(__dirname + '/frontend')));
+//app.use(express.static(path.join(__dirname + '/frontend')));
 
 app.use('/', routes);
 app.use('/users', users);
+//app.use('/codeanywhere', codeAnywhere);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
