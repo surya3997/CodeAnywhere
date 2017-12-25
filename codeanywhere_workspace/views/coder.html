@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- <title>CodeEditor</title> -->
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./">Techwiz</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="./profile">CodeAnywhere</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome <span id="appendName"></span><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+        </nav>
+
+        <!-- Main component for a primary marketing message or call to action -->
+        <div class="jumbotron">
+
+            <div class="form-group">
+                <label for="sel1">Select list (select one):</label>
+                <select class="form-control" style="max-width:150px" id="sel1">
+                    <option>C</option>
+                    <option>C++</option>
+                    <option>Java</option>
+                    <option>Python</option>
+                    <option>Go</option>
+                </select>
+                <br>
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Code here:</label>
+                <textarea class="form-control" rows="20" id="comment" style="resize:none"></textarea>
+            </div>
+
+            <p>
+                <a class="btn btn-lg btn-primary" href="#" role="button">Run &raquo;</a>
+            </p>
+        </div>
+
+    </div>
+    <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.1.11.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <script>
+        function addUserName() {
+            $("#appendName").html("Surya");
+        }
+        addUserName();
+    </script>
+
+</body>
+
+</html>

@@ -24,21 +24,21 @@
             <div id="login">
                 <h1>Welcome Back!</h1>
 
-                <form action="/codeanywhere" method="post">
+                <form id="loginForm" action="/codeanywhere" method="post">
                     <div class="field-wrap">
                         <label>
                             Email Address<span class="req">*</span>
                         </label>
-                        <input type="email" required autocomplete="off" />
+                        <input type="email" name="logemail" id="login_emailID" required autocomplete="off" />
                     </div>
                     <div class="field-wrap">
                         <label>
                             Password<span class="req">*</span>
                         </label>
-                        <input type="password" required autocomplete="off" />
+                        <input type="password" name="logpassword" id="login_password" required autocomplete="off" />
                     </div>
-                    <p class="forgot"><a href="#">Forgot Password?</a></p>
-                    <button class="button button-block">Log In</button>
+                    <!-- <p class="forgot"><a href="#">Forgot Password?</a></p> -->
+                    <button type='submit' class="button button-block">Log In</button>
                 </form>
             </div>
             <!-- Login page content ends -->
@@ -46,38 +46,38 @@
             <!-- Signup page content -->
             <div id="signup">
                 <h1>Sign Up for Free</h1>
-                <form action="/codeanywhere" method="post">
+                <form id="signupForm" action="/codeanywhere" method="post">
                     <div class="top-row">
                         <div class="field-wrap">
                             <label>
                                 First Name<span class="req">*</span>
                             </label>
-                            <input type="text" required autocomplete="off" />
+                            <input type="text" name="firstname" id="fname" required autocomplete="off" />
                         </div>
                         <div class="field-wrap">
                             <label>
                                 Last Name<span class="req">*</span>
                             </label>
-                            <input type="text" required autocomplete="off" />
+                            <input type="text" name="lastname" id="lname" required autocomplete="off" />
                         </div>
                     </div>
                     <div class="field-wrap">
                         <label>
                             Email Address<span class="req">*</span>
                         </label>
-                        <input type="email" required autocomplete="off" />
+                        <input type="email" name="email" id="signup_emailID" required autocomplete="off" />
                     </div>
                     <div class="field-wrap">
                         <label>
-                            Set A Password<span class="req">*</span>
+                            Set Password<span class="req">*</span>
                         </label>
-                        <input type="password" required autocomplete="off" />
+                        <input type="password" name="password" id="signup_password" required autocomplete="off" />
                     </div>
                     <div class="field-wrap">
                         <label>
                             Retype Password<span class="req">*</span>
                         </label>
-                        <input type="password" required autocomplete="off" />
+                        <input type="password" name="passwordConf" id="confPassword" required autocomplete="off" />
                     </div>
                     <button type="submit" class="button button-block">Get Started</button>
                 </form>

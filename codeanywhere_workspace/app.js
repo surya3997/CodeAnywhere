@@ -9,12 +9,29 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 var routes = require('./routes/router.js');
-var users = require('./routes/users');
+//var users = require('./models/users.js');
 var codeAnywhere = require("./routes/codeanywhere.js");
 
+//connect to MongoDB
 var app = express();
 mongoose.connect('mongodb://localhost/testForAuth');
 var db = mongoose.connection;
+
+//handle mongo error
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('openUri', function() {
+    // we're connected!
+});
+
+//use sessions for tracking logins
+app.use(session({
+    secret: 'work hard',
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({
+        mongooseConnection: db
+    })
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use(express.static(path.join(__dirname + '/frontend')));
 
 app.use('/', routes);
-app.use('/users', users);
+//app.use('/users', users);
 //app.use('/codeanywhere', codeAnywhere);
 
 // catch 404 and forward to error handler
@@ -53,8 +70,8 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(3000, function() {
-    console.log("In app.js : " + __dirname);
-    console.log('Express app listening on port 3000');
+    //console.log("In app.js : " + __dirname);
+    //console.log('Express app listening on port 3000');
 });
 
 module.exports = app;

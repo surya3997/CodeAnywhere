@@ -1,1 +1,6 @@
 templates/
+db/
+codeanywhere_workspace/a.out
+codeanywhere_workspace/test.cpp
+codeanywhere_workspace/test.py
+compiler/
