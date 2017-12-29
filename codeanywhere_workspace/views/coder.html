@@ -16,7 +16,16 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/navbar.css" rel="stylesheet">
-
+    <style>
+        #printOutput {
+            border-radius: 5px;
+            border: 1px solid rgb(62, 136, 146);
+            padding: 20px;
+            width: 100%;
+            height: auto;
+            white-space: pre-line;
+        }
+    </style>
 
 </head>
 
@@ -76,8 +85,12 @@
             </div>
 
             <p>
-                <a class="btn btn-lg btn-primary" href="#" role="button">Run &raquo;</a>
+                <a class="btn btn-lg btn-primary" onclick="getOutput()" role="button">Run &raquo;</a>
             </p>
+            <div id='showOutput' style="display:none">
+                <h4><label>Output:</label></h4>
+                <p id="printOutput"></p>
+            </div>
         </div>
 
     </div>
@@ -92,9 +105,35 @@
 
     <script>
         function addUserName() {
-            $("#appendName").html("Surya");
+            $.post('/getUserName', {}, function(response) {
+                var data = JSON.parse(response);
+                $("#appendName").html(data['name']);
+            });
         }
         addUserName();
+
+        function getOutput() {
+            var language = $('#sel1').find(":selected").text();
+            var code = $('#comment').val();
+
+            console.log(language);
+            console.log(code.length);
+
+            $("#showOutput").css('display', 'block');
+            $("#printOutput").html('Loading!');
+            $.post('/compileCode', {
+                language: language,
+                code: code
+            }, function(data, error, xhr) {
+                console.log(data);
+                var out = data.output;
+                if (data.errors != '') {
+                	out += '<br>' + data.errors;
+                }
+                $("#printOutput").html(out);
+
+            });
+        }
     </script>
 
 </body>
