@@ -55,6 +55,7 @@ app.use('/', routes);
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
+    res.send("<h1>404 Not found!<h1>")
     next(err);
 });
 

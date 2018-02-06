@@ -81,7 +81,7 @@
 
             <div class="form-group">
                 <label for="comment">Code here:</label>
-                <textarea class="form-control" rows="20" id="comment" style="resize:none"></textarea>
+                <textarea class="form-control" rows="20" id="comment" style="resize:none" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}"></textarea>
             </div>
 
             <p>
@@ -128,7 +128,7 @@
                 console.log(data);
                 var out = data.output;
                 if (data.errors != '') {
-                	out += '<br>' + data.errors;
+                    out += '<br>' + data.errors;
                 }
                 $("#printOutput").html(out);
 

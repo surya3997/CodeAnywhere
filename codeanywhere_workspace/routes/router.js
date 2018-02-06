@@ -55,7 +55,7 @@ router.post('/codeanywhere', function(req, res, next) {
         User.create(userData, function(error, user) {
             if (error) {
                 console.log('There is an error!');
-                res.send("<h1>Error creating user! Please try after sometime!<h1>");
+                res.send("<h1>Error creating user!<br>Please try after sometime or with different email id!<h1>");
                 return next(error);
             } else {
                 req.session.userId = user._id;

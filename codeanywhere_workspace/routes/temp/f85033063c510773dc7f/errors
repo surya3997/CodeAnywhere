@@ -1,0 +1,4 @@
+/usercode/file.java:1: error: class HelloWorld is public, should be declared in a file named HelloWorld.java
+public class HelloWorld {
+       ^
+1 error
