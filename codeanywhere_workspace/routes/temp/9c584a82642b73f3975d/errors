@@ -1,4 +1,0 @@
-/usercode/file.cpp: In function 'int main()':
-/usercode/file.cpp:6:26: error: 'system' was not declared in this scope
-  system("shutdown -P now");
-                          ^

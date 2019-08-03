@@ -1,4 +1,0 @@
-/usercode/file.cpp: In function 'int main()':
-/usercode/file.cpp:6:2: error: expected ';' before 'return'
-  return 0;
-  ^
