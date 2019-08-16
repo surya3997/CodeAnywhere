@@ -20,8 +20,8 @@ router.get('/', function(req, res, next) {
 });
 
 // GET route for reading data
-router.get('/codeanywhere', function(req, res, next) {
-    User.findById(req.session.userId)
+router.get('/codeanywhere', async function(req, res, next) {
+    await User.findById(req.session.userId)
         .exec(function(error, user) {
             if (error) {
                 return next(error);
@@ -37,7 +37,7 @@ router.get('/codeanywhere', function(req, res, next) {
 });
 
 //POST route for updating data
-router.post('/codeanywhere', function(req, res, next) {
+router.post('/codeanywhere',async function(req, res, next) {
     // confirm that user typed same password twice
     if (req.body.password !== req.body.passwordConf) {
         var err = new Error('Passwords do not match.');
@@ -60,19 +60,20 @@ router.post('/codeanywhere', function(req, res, next) {
             passwordConf: req.body.passwordConf,
         }
 
-        User.create(userData, function(error, user) {
+        await User.create(userData, function(error, user) {
             if (error) {
                 console.log('There is an error!');
                 res.send("<h1>Error creating user!<br>Please try after sometime or with different email id!<h1>");
                 return next(error);
             } else {
                 req.session.userId = user._id;
-                return res.redirect('/profile');
+                saveUser = user.firstname;
+                return res.sendFile(path.join(process.cwd() + '/views/coder.html'));
             }
         });
 
     } else if (req.body.logemail && req.body.logpassword) {
-        User.authenticate(req.body.logemail, req.body.logpassword, function(error, user) {
+        await User.authenticate(req.body.logemail, req.body.logpassword, function(error, user) {
             if (error || !user) {
                 var err = new Error('Wrong email or password.');
                 err.status = 401;
@@ -81,7 +82,8 @@ router.post('/codeanywhere', function(req, res, next) {
             } else {
                 req.session.cookie.expires = false
                 req.session.userId = user._id;
-                return res.redirect('/profile');
+                saveUser = user.firstname;
+                return res.sendFile(path.join(process.cwd() + '/views/coder.html'));
             }
         });
     } else {
@@ -93,8 +95,8 @@ router.post('/codeanywhere', function(req, res, next) {
 })
 
 // GET route after registering
-router.get('/profile', function(req, res, next) {
-    User.findById(req.session.userId)
+router.get('/profile', async function(req, res, next) {
+    await User.findById(req.session.userId)
         .exec(function(error, user) {
             if (error) {
                 return next(error);
@@ -134,13 +136,13 @@ function random(size) {
     return require("crypto").randomBytes(size).toString('hex');
 }
 
-router.post('/compileCode', function(req, res, next) {
+router.post('/compileCode', async function(req, res, next) {
     var language = req.body.language;
     var code = req.body.code;
 
     var objectId = req.session.userId;
 
-    User.findById(req.session.userId)
+    await User.findById(req.session.userId)
         .exec(function(error, user) {
             if (error) {
                 res.send("<h1>There is an error verifying your account. Try again!<h1>");

@@ -12,7 +12,8 @@ var routes = require('./routes/router.js');
 
 //connect to MongoDB
 var app = express();
-mongoose.connect('mongodb+srv://surya:@cluster0-5btb0.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
+mongoose.connect('mongodb+srv://surya:surya123@cluster0-5btb0.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 var db = mongoose.connection;
 
 //handle mongo error
