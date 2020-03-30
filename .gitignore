@@ -5,3 +5,4 @@ codeanywhere_workspace/test.cpp
 codeanywhere_workspace/test.py
 compiler/
 node_modules
+*.DS_Store

@@ -13,7 +13,7 @@ var routes = require('./routes/router.js');
 //connect to MongoDB
 var app = express();
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb+srv://surya:surya123@cluster0-5btb0.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://surya:surya3997@cluster0-5btb0.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 var db = mongoose.connection;
 
 //handle mongo error
@@ -65,10 +65,10 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-PORT = 5000
+// PORT = 5000
 
-app.listen(PORT, function() {
-    console.log('Express app listening on port ', PORT);
-});
+// app.listen(PORT, function() {
+//     console.log('Express app listening on port ', PORT);
+// });
 
 module.exports = app;
