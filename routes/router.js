@@ -3,16 +3,9 @@ var router = express.Router();
 var path = require('path');
 var fs = require('fs');
 var User = require('../models/users');
-var ExpressBrute = require('express-brute');
-var storemem = new ExpressBrute.MemoryStore(); // stores state locally, don't use this in production
 var arr = require('./compilers');
 var sandBox = require('./DockerSandbox');
 var saveUser = '';
-
-var bruteforce = new ExpressBrute(storemem, {
-    freeRetries: 50,
-    lifetime: 3600
-});
 
 // GET route for reading data
 router.get('/', function(req, res, next) {
