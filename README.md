@@ -1,6 +1,6 @@
 # CodeAnywhere
 
-A portfolio site and an online platform to code.
+An online platform to code.
 
 ## Install Docker in Ubuntu
 ```
