@@ -9,11 +9,14 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 var routes = require('./routes/router.js');
+var uname = ''
+var passwd = ''
+var secret_string = ''
 
 //connect to MongoDB
 var app = express();
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb+srv://surya:surya3997@cluster0-5btb0.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://'+uname+':'+passwd+'@cluster0-5btb0.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 var db = mongoose.connection;
 
 //handle mongo error
@@ -24,7 +27,7 @@ db.once('openUri', function() {
 
 //use sessions for tracking logins
 app.use(session({
-    secret: 'work hard',
+    secret: secret_string,
     resave: true,
     saveUninitialized: false,
     store: new MongoStore({
