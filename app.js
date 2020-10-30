@@ -16,7 +16,7 @@ var secret_string = ''
 //connect to MongoDB
 var app = express();
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb+srv://'uname':'+passwd+'@cluster0-5btb0.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://'+uname+':'+passwd+'@cluster0-5btb0.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 var db = mongoose.connection;
 
 //handle mongo error
