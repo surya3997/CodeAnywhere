@@ -2,6 +2,10 @@
 
 An online platform to code.
 
+## Todos
+- Decouple frontend and backend
+- Dockerize the compiler box service properly
+
 ## Install Docker in Ubuntu
 ```
 cd setup
